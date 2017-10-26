@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta equiv="Expires" content="0">
+    <title></title>
+    <script type="text/javascript">
+        var phoneWidth = parseInt(window.screen.width),
+                phoneScale = phoneWidth / 640,
+                ua = navigator.userAgent;
+        if (/Android (\d+\.\d+)/.test(ua)) {
+            var version = parseFloat(RegExp.$1);
+            // andriod 2.3
+            if (version > 2.3) {
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+                // andriod 2.3以上
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+            // 其他系统
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+
+        var sysParam = {
+//            wxId: '<?php echo $userinfo['openid'];?>',//*用户微信的openid
+//            baseUrl:'<?php echo $this->SURL(true); ?>/',//*插件的基本资源路径
+//            isAttention :'<?php echo $isSubscribe;?>'//*用户是否已关注
+            ajax_goshareDetail:'',//去分享详情的页面
+            ajax_goPlayDetail:'',//去活动详情的页面
+            ajax_goshare:'',//去我的分享页面
+            ajax_gofavor:'',//去我的收藏页面
+            isAttention:0,//是否有关注  1关注  0没有
+            ajax_submitScore:'',//提交积分
+            postSort:'',//首页分类请求
+            ajax_submitZan:''//首页点赞
+        };
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/animation.css">
+    <link rel="stylesheet" type="text/css" href="css/popup.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/font/css/ico.css">
+</head>
+<body >
+<!--loading-->
+<!--<section class="loding" id="loading">-->
+<!--<div class="spinner">-->
+<!--<div class="dot1"></div>-->
+<!--<div class="dot2"></div>-->
+<!--</div>-->
+<!--<div class="text">加载中...</div>-->
+<!--</section>-->
+
+<section class="myfavorSection ">
+    <div class="title">
+        <i class="ic-back"></i>
+        <span>我的收藏</span>
+    </div>
+    <div class="mainfavorDiv" id="favorScore">
+        <ul>
+            <li>
+                <div class="favorImgDiv">
+                    <img src="images/shareImg.png">
+                </div>
+                <div class="favorInfoDiv">
+                    <p>
+                        <span>东门茂业：亲吻</span>
+                        <span class="ftRed fr staus">进行中</span>
+                    </p>
+                    <p>活动时间：2016/04/03-2016/04/15</p>
+                    <p>
+                        <i class="ic-score"></i>
+                        <span>20</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="favorImgDiv">
+                    <img src="images/shareImg.png">
+                </div>
+                <div class="favorInfoDiv">
+                    <p>
+                        <span>东门茂业：亲吻</span>
+                        <span class=" fr staus">活动结束</span>
+                    </p>
+                    <p>活动时间：2016/04/03-2016/04/15</p>
+                    <p>
+                        <i class="ic-score"></i>
+                        <span>20</span>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<!--音乐控制-->
+<!--<img src="images/mPlay.png" id="musicCtrl" class="mRb mAnim">-->
+<script src="js/zepto.min.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+    var hei=document.documentElement.clientHeight-160;
+    $("#indexScroll").css('height',hei+'px');
+    indexScroll= new IScroll("#indexScroll",{
+        bounce :false,
+        useTransform:true,
+        click:true,
+        zoom:true,
+        probeType:2
+
+    });
+    indexScroll.on("scrollEnd",function(){
+        //var a=fun.pagenum();
+        if(recod_ok==1){
+            //判定是否划到底
+            indexSort(1);
+            setTimeout(function(){
+                indexScroll.refresh();
+            },20)
+        }
+    })
+    window.onload = function(){
+        $("#loading").addClass("hide");
+        setTimeout(function(){
+            $("#loading").detach();
+        },500)
+    }
+</script>
+</body>
+</html>

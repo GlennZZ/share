@@ -1,0 +1,7 @@
+protected/runtime/cache/
+addons1/
+qrcode/
+uploads/
+assets/
+protected/runtime/gii-1.1.15/ModelCode.php
+protected/runtime/application.log
