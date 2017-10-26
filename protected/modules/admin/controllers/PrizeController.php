@@ -1,6 +1,6 @@
 <?php
 
-class PrizeController extends Controller
+class PrizeController extends BaseController
 {
 	
 
