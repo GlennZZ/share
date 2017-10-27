@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-10-26 19:25:18
+Date: 2017-10-27 19:38:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -252,19 +252,21 @@ INSERT INTO `app_uni` VALUES ('16', '深圳宜和', '2016-11-09 11:42:10', '2016
 DROP TABLE IF EXISTS `prize`;
 CREATE TABLE `prize` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL COMMENT '奖品名称',
+  `name` varchar(255) NOT NULL COMMENT '奖品名称',
   `img` varchar(255) CHARACTER SET ascii DEFAULT NULL COMMENT '奖品照片',
   `integral` int(11) DEFAULT NULL COMMENT '所需积分',
   `unid` int(11) DEFAULT NULL COMMENT '商家ID',
-  `code` varchar(255) DEFAULT NULL COMMENT '微信卡劵ID',
-  `status` int(11) DEFAULT NULL COMMENT '状态 1启用 2禁用 3已下线',
+  `code` varchar(255) NOT NULL COMMENT '微信卡劵ID',
+  `status` int(11) NOT NULL DEFAULT '1' COMMENT '状态 1启用 2禁用 3已下线',
+  `num` int(11) NOT NULL DEFAULT '0' COMMENT '奖品数量',
   `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT ' 创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of prize
 -- ----------------------------
+INSERT INTO `prize` VALUES ('1', '50现金劵', 'http://share.i-lz.cn/uploads/Z2hfNDhiMzI0NmE3YmI3/temp/57886414e2b90.jpg', '1000', null, '1234', '1', '10', null);
 
 -- ----------------------------
 -- Table structure for prize_log
@@ -5508,7 +5510,7 @@ CREATE TABLE `sys_operation_log` (
   `ip` varchar(32) DEFAULT NULL,
   `optime` int(8) NOT NULL DEFAULT '0' COMMENT '操作时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5819 DEFAULT CHARSET=utf8 COMMENT='操作记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=5879 DEFAULT CHARSET=utf8 COMMENT='操作记录表';
 
 -- ----------------------------
 -- Records of sys_operation_log
@@ -11331,6 +11333,66 @@ INSERT INTO `sys_operation_log` VALUES ('5815', '1', 'saveflag', 'sysUsergroup',
 INSERT INTO `sys_operation_log` VALUES ('5816', '1', 'Editflag', 'sysUsergroup', 'admin', '', '127.0.0.1', '1509014318');
 INSERT INTO `sys_operation_log` VALUES ('5817', '1', 'index', 'default', 'admin', '', '127.0.0.1', '1509014643');
 INSERT INTO `sys_operation_log` VALUES ('5818', '1', 'index', 'index', 'admin', '', '127.0.0.1', '1509014644');
+INSERT INTO `sys_operation_log` VALUES ('5819', '1', 'index', 'default', 'admin', '', '127.0.0.1', '1509070968');
+INSERT INTO `sys_operation_log` VALUES ('5820', '1', 'index', 'index', 'admin', '', '127.0.0.1', '1509070969');
+INSERT INTO `sys_operation_log` VALUES ('5821', '1', 'webSetup', 'sysSetup', 'admin', '', '127.0.0.1', '1509070973');
+INSERT INTO `sys_operation_log` VALUES ('5822', '1', 'admin', 'sysSlide', 'admin', '', '127.0.0.1', '1509070974');
+INSERT INTO `sys_operation_log` VALUES ('5823', '1', 'admin', 'sysSlide', 'admin', '', '127.0.0.1', '1509070978');
+INSERT INTO `sys_operation_log` VALUES ('5824', '1', 'admin', 'sysSlide', 'admin', '', '127.0.0.1', '1509070985');
+INSERT INTO `sys_operation_log` VALUES ('5825', '1', 'Admin', 'prize', 'admin', '', '127.0.0.1', '1509071012');
+INSERT INTO `sys_operation_log` VALUES ('5826', '1', 'index', 'default', 'admin', '', '127.0.0.1', '1509071085');
+INSERT INTO `sys_operation_log` VALUES ('5827', '1', 'index', 'index', 'admin', '', '127.0.0.1', '1509071086');
+INSERT INTO `sys_operation_log` VALUES ('5828', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509071088');
+INSERT INTO `sys_operation_log` VALUES ('5829', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509071089');
+INSERT INTO `sys_operation_log` VALUES ('5830', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509071090');
+INSERT INTO `sys_operation_log` VALUES ('5831', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509071091');
+INSERT INTO `sys_operation_log` VALUES ('5832', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509071092');
+INSERT INTO `sys_operation_log` VALUES ('5833', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509071093');
+INSERT INTO `sys_operation_log` VALUES ('5834', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509071094');
+INSERT INTO `sys_operation_log` VALUES ('5835', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509071476');
+INSERT INTO `sys_operation_log` VALUES ('5836', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509072152');
+INSERT INTO `sys_operation_log` VALUES ('5837', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509072185');
+INSERT INTO `sys_operation_log` VALUES ('5838', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509072208');
+INSERT INTO `sys_operation_log` VALUES ('5839', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509072325');
+INSERT INTO `sys_operation_log` VALUES ('5840', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509072339');
+INSERT INTO `sys_operation_log` VALUES ('5841', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509072700');
+INSERT INTO `sys_operation_log` VALUES ('5842', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509072792');
+INSERT INTO `sys_operation_log` VALUES ('5843', '1', 'create', 'prize', 'admin', '', '127.0.0.1', '1509072810');
+INSERT INTO `sys_operation_log` VALUES ('5844', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509072811');
+INSERT INTO `sys_operation_log` VALUES ('5845', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509072926');
+INSERT INTO `sys_operation_log` VALUES ('5846', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073204');
+INSERT INTO `sys_operation_log` VALUES ('5847', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073206');
+INSERT INTO `sys_operation_log` VALUES ('5848', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073207');
+INSERT INTO `sys_operation_log` VALUES ('5849', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073474');
+INSERT INTO `sys_operation_log` VALUES ('5850', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073491');
+INSERT INTO `sys_operation_log` VALUES ('5851', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073509');
+INSERT INTO `sys_operation_log` VALUES ('5852', '1', 'update', 'prize', 'admin', '', '127.0.0.1', '1509073512');
+INSERT INTO `sys_operation_log` VALUES ('5853', '1', 'update', 'prize', 'admin', '', '127.0.0.1', '1509073517');
+INSERT INTO `sys_operation_log` VALUES ('5854', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073520');
+INSERT INTO `sys_operation_log` VALUES ('5855', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073605');
+INSERT INTO `sys_operation_log` VALUES ('5856', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073607');
+INSERT INTO `sys_operation_log` VALUES ('5857', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073610');
+INSERT INTO `sys_operation_log` VALUES ('5858', '1', 'update', 'prize', 'admin', '', '127.0.0.1', '1509073612');
+INSERT INTO `sys_operation_log` VALUES ('5859', '1', 'update', 'prize', 'admin', '', '127.0.0.1', '1509073615');
+INSERT INTO `sys_operation_log` VALUES ('5860', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073616');
+INSERT INTO `sys_operation_log` VALUES ('5861', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509073619');
+INSERT INTO `sys_operation_log` VALUES ('5862', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509074590');
+INSERT INTO `sys_operation_log` VALUES ('5863', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509074630');
+INSERT INTO `sys_operation_log` VALUES ('5864', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509074911');
+INSERT INTO `sys_operation_log` VALUES ('5865', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509074912');
+INSERT INTO `sys_operation_log` VALUES ('5866', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509074914');
+INSERT INTO `sys_operation_log` VALUES ('5867', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509074915');
+INSERT INTO `sys_operation_log` VALUES ('5868', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509074916');
+INSERT INTO `sys_operation_log` VALUES ('5869', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509074918');
+INSERT INTO `sys_operation_log` VALUES ('5870', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509074919');
+INSERT INTO `sys_operation_log` VALUES ('5871', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509074925');
+INSERT INTO `sys_operation_log` VALUES ('5872', '1', 'index', 'default', 'admin', '', '127.0.0.1', '1509083390');
+INSERT INTO `sys_operation_log` VALUES ('5873', '1', 'index', 'index', 'admin', '', '127.0.0.1', '1509083390');
+INSERT INTO `sys_operation_log` VALUES ('5874', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509083807');
+INSERT INTO `sys_operation_log` VALUES ('5875', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509083808');
+INSERT INTO `sys_operation_log` VALUES ('5876', '1', 'admin', 'prize', 'admin', '', '127.0.0.1', '1509083809');
+INSERT INTO `sys_operation_log` VALUES ('5877', '1', 'update', 'prize', 'admin', '', '127.0.0.1', '1509083813');
+INSERT INTO `sys_operation_log` VALUES ('5878', '1', 'admin', 'prizeLog', 'admin', '', '127.0.0.1', '1509084366');
 
 -- ----------------------------
 -- Table structure for sys_posid
@@ -11565,7 +11627,7 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '超级管理员', '', '$2a$10$UYQ1z3w53CZKO9S5KsCR3ebkoSsIBPdpl603PFowb.cDYC2QW33nW', 'http://share.i-lz.cn/uploads/Z2hfNDhiMzI0NmE3YmI3/temp/57723e94a57fc.png', '13006687675', '12324212312', '546234549@qq.com', '1509014643', '127.0.0.1', '633', '2017-10-26 14:21:33', '1', '0', 'gh_48b3246a7bb7');
+INSERT INTO `sys_user` VALUES ('1', 'admin', '超级管理员', '', '$2a$10$UYQ1z3w53CZKO9S5KsCR3ebkoSsIBPdpl603PFowb.cDYC2QW33nW', 'http://share.i-lz.cn/uploads/Z2hfNDhiMzI0NmE3YmI3/temp/57723e94a57fc.png', '13006687675', '12324212312', '546234549@qq.com', '1509083390', '127.0.0.1', '635', '2017-10-26 14:21:33', '1', '0', 'gh_48b3246a7bb7');
 INSERT INTO `sys_user` VALUES ('33', 'lzkj', '管理员', '', '$2a$10$5B/f7qwgNc/RgUrX4SI.XeXNFYSkI6lCFrl0jjlryaY3v0w/3m5li', '', '', '', '', '1433313448', '127.0.0.1', '1', '2015-06-03 09:58:15', '1', '2', 'gh_48b3246a7bb7');
 INSERT INTO `sys_user` VALUES ('34', 'share', '运营', '', '$2a$10$CMs7f5fAVLKTvJcpeGRfIOVLmTu2jvn3ZKFUPse0fXYTiRGR37hwa', 'http://share.i-lz.cn/uploads/Z2hfNDhiMzI0NmE3YmI3/temp/57723e94a57fc.png', '', '', '', '1508986259', '121.34.146.238', '49', '2016-06-28 17:08:38', '1', '4', 'gh_48b3246a7bb7');
 
@@ -11743,14 +11805,14 @@ INSERT INTO `sys_user_menu` VALUES ('200', 'admin/SysMemberRecord/admin', '', '�
 INSERT INTO `sys_user_menu` VALUES ('201', 'admin/SysWxredpackRecord/admin', '', '提现记录', '', '1', '1', '1', '165');
 INSERT INTO `sys_user_menu` VALUES ('202', 'admin/SysMemberRecord/admin2', '', '积分消耗详细', '', '1', '1', '1', '177');
 INSERT INTO `sys_user_menu` VALUES ('203', '/admin/appGame/updateNum', '', '更新总积分投放', '', '1', '1', '1', '177');
-INSERT INTO `sys_user_menu` VALUES ('204', 'prize/admin', '', '奖品设置', '', '1', '1', '1', '3');
-INSERT INTO `sys_user_menu` VALUES ('205', 'prize/admin', '', '奖品列表', '', '1', '1', '1', '204');
-INSERT INTO `sys_user_menu` VALUES ('206', 'prizeLog/admin', '', '领奖记录', '', '1', '1', '1', '204');
-INSERT INTO `sys_user_menu` VALUES ('207', 'prize/create', '', '增加', '', '1', '0', '1', '205');
-INSERT INTO `sys_user_menu` VALUES ('208', 'prize/update', '', '修改', '', '1', '0', '1', '205');
-INSERT INTO `sys_user_menu` VALUES ('209', 'prize/delete', '', '删除', '', '1', '0', '1', '205');
-INSERT INTO `sys_user_menu` VALUES ('210', 'prizeLog/view', '', '查看', '', '1', '0', '1', '206');
-INSERT INTO `sys_user_menu` VALUES ('211', 'prizeLog/delete', '', '删除', '', '1', '0', '1', '206');
+INSERT INTO `sys_user_menu` VALUES ('204', 'admin/prize/admin', '', '奖品设置', '', '1', '1', '1', '3');
+INSERT INTO `sys_user_menu` VALUES ('205', 'admin/prize/admin', '', '奖品列表', '', '1', '1', '1', '204');
+INSERT INTO `sys_user_menu` VALUES ('206', 'admin/prizeLog/admin', '', '领奖记录', '', '1', '1', '1', '204');
+INSERT INTO `sys_user_menu` VALUES ('207', 'admin/prize/create', '', '增加', '', '1', '0', '1', '205');
+INSERT INTO `sys_user_menu` VALUES ('208', 'admin/prize/update', '', '修改', '', '1', '0', '1', '205');
+INSERT INTO `sys_user_menu` VALUES ('209', 'admin/prize/delete', '', '删除', '', '1', '0', '1', '205');
+INSERT INTO `sys_user_menu` VALUES ('210', 'admin/prizeLog/view', '', '查看', '', '1', '0', '1', '206');
+INSERT INTO `sys_user_menu` VALUES ('211', 'admin/prizeLog/delete', '', '删除', '', '1', '0', '1', '206');
 
 -- ----------------------------
 -- Table structure for sys_word_list
