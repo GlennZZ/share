@@ -11,6 +11,7 @@
  * @property integer $unid
  * @property string $code
  * @property integer $status
+ * @property integer $num
  * @property string $create_time
  */
 class Prize extends CActiveRecord
@@ -31,12 +32,12 @@ class Prize extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('integral, unid, status', 'numerical', 'integerOnly'=>true),
+			array('integral, unid, status, num', 'numerical', 'integerOnly'=>true),
 			array('name, img, code', 'length', 'max'=>255),
 			array('create_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, img, integral, unid, code, status, create_time', 'safe', 'on'=>'search'),
+			array('id, name, img, integral, unid, code, status, num, create_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +64,8 @@ class Prize extends CActiveRecord
 			'integral' => '所需积分',
 			'unid' => '商家ID',
 			'code' => '微信卡劵ID',
-			'status' => '状态 1启用 2禁用 3已下线',
+			'status' => '状态',// 1启用 2禁用
+			'num' => '奖品数量',
 			'create_time' => ' 创建时间',
 		);
 	}
@@ -93,6 +95,7 @@ class Prize extends CActiveRecord
 		$criteria->compare('unid',$this->unid);
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('num',$this->num);
 		$criteria->compare('create_time',$this->create_time,true);
 
 		return new CActiveDataProvider($this, array(

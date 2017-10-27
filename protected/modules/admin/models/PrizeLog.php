@@ -61,7 +61,7 @@ class PrizeLog extends CActiveRecord
 			'unid' => '店铺ID',
 			'name' => 'Name',
 			'pid' => '奖品ID',
-			'create_time' => 'Create Time',
+			'create_time' => '创建时间',
 		);
 	}
 

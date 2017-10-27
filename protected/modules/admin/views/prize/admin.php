@@ -52,17 +52,31 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'id',
 		'name',
-		'img',
+
+        array(
+            'name'=>'图片',
+            'value'=>'CHtml::image("$data->img","",
+                    array(
+                        "style"=>"height:120px;",
+                        "class"=>"medium radius-all-2",
+                        "onclick"=>"image_priview($(this).attr(\"src\"))"
+                    )
+                )',
+            'type'=>'html'
+        ),
+
+
 		'integral',
-		'unid',
+//		'unid',
 		'code',
+		'num',
 		/*
 		'status',
 		'create_time',
 		*/
 			array(
 			'class' => 'CButtonColumn',
-			'template' => '{config}{view}{update}{delete}',
+			'template' => '{update}{delete}',
 			'viewButtonOptions' => array(
 				'title' => '查看',
 				'style' => 'padding:10px'
