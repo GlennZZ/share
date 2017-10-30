@@ -14,19 +14,13 @@ $('.search-form form').submit(function(){
 ?>
 <div id="page-title">
 	<h3>
-		管理
+		领取记录
 		<small> <管理 </small>
 	</h3>
 </div>
 <div id="page-content">
 
 	<div style="padding-bottom: 10px">
-		<a href="<?php echo $this->createUrl('create');?>" class="btn medium primary-bg ">
-			<span class="button-content">
-				<i class="glyph-icon icon-plus float-left "></i>
-				添加
-			</span>
-		</a>
 	</div>
 	<div class="search-form">
 <?php $this->renderPartial('_search',array(
@@ -51,14 +45,20 @@ $('.search-form form').submit(function(){
 	/*'filter'=>$model,*/
 	'columns'=>array(
 		'id',
-		'uid',
-		'unid',
-		'name',
-		'pid',
+//		'unid',
+        array(
+            'name'=>'uid',
+            'value'=>'$data->us->nickname',
+        ),
+//		'name',
+		array(
+            'name'=>'pid',
+            'value'=>'$data->pr->name',
+        ),
 		'create_time',
 			array(
 			'class' => 'CButtonColumn',
-			'template' => '{config}{view}{update}{delete}',
+			'template' => '',
 			'viewButtonOptions' => array(
 				'title' => '查看',
 				'style' => 'padding:10px'

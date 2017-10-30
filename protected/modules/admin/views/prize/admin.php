@@ -14,8 +14,8 @@ $('.search-form form').submit(function(){
 ?>
 <div id="page-title">
 	<h3>
-		管理
-		<small> <管理 </small>
+		奖品管理
+		<small> <列表 </small>
 	</h3>
 </div>
 <div id="page-content">

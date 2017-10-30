@@ -47,6 +47,8 @@ class PrizeLog extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+		    'pr'=>array(self::HAS_ONE,'Prize',array('id'=>'pid'),'select'=>'*'),
+		    'us'=>array(self::HAS_ONE,'SysMember',array('id'=>'uid'),'select'=>'*'),
 		);
 	}
 
@@ -59,9 +61,9 @@ class PrizeLog extends CActiveRecord
 			'id' => 'ID',
 			'uid' => '用户ID',
 			'unid' => '店铺ID',
-			'name' => 'Name',
+			'name' => '奖品名',
 			'pid' => '奖品ID',
-			'create_time' => '创建时间',
+			'create_time' => '领取时间',
 		);
 	}
 
